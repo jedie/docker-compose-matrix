@@ -11,8 +11,7 @@ services:
     # failure
     restart: unless-stopped
     # See the readme for a full documentation of the environment settings
-    environment:
-      - SYNAPSE_CONFIG_PATH=/config/homeserver.yaml
+    env_file: ./.env
     volumes:
       # You may either store all the files in a local folder
       - ./volumes/synapse/data:/data:rw

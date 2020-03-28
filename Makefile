@@ -9,3 +9,8 @@ build: ## build image (not used yet)
 
 up: ## start server
 	docker-compose build --pull
+
+#shell: ## go into container shell
+
+generate: ## generate the config file
+	docker-compose run synapse generate
