@@ -13,6 +13,10 @@ up: ## start server
 down: ## stop server
 	docker-compose down
 
+restart: ## call "down" and "up" to restart containers
+	$(MAKE) down
+	$(MAKE) up
+
 run_shell: ## go into container shell
 	docker-compose run --rm --entrypoint=/bin/sh synapse
 
@@ -24,3 +28,4 @@ generate: ## calls: './start.py generate'
 
 migrate_generate: ## calls: './start.py migrate_config'
 	docker-compose run --rm synapse migrate_config
+
