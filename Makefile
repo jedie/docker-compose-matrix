@@ -7,8 +7,12 @@ help:  ## This help page
 build: ## build image (not used yet)
 	docker-compose build --pull
 
+logs: ## display docker logs
+	docker-compose logs --tail=500 --follow
+
 up: ## start server
-	docker-compose up
+	docker-compose up -d
+	$(MAKE) logs
 
 down: ## stop server
 	docker-compose down

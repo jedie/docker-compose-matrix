@@ -17,6 +17,7 @@ services:
     env_file: .env
     volumes:
       - ./entrypoint.sh:/entrypoint.sh:ro
+      - ./homeserver.yaml:/conf/homeserver.yaml:ro
       - ./volumes/synapse/data:/data:rw
       # .. or you may split this between different storage points
       # - ./files:/data
