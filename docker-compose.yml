@@ -8,7 +8,7 @@ services:
   synapse:
     container_name: matrix_synapse
     image: matrixdotorg/synapse:latest
-    entrypoint: /bin/sleep 1d
+    entrypoint: ./entrypoint.sh
 
     # Since synapse does not retry to connect to the database, restart upon
     # failure
@@ -16,7 +16,7 @@ services:
     # See the readme for a full documentation of the environment settings
     env_file: .env
     volumes:
-      # You may either store all the files in a local folder
+      - ./entrypoint.sh:/entrypoint.sh:ro
       - ./volumes/synapse/data:/data:rw
       # .. or you may split this between different storage points
       # - ./files:/data

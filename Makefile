@@ -26,6 +26,6 @@ exec_shell: ## go into container shell
 generate: ## calls: './start.py generate'
 	docker-compose run --rm synapse generate
 
-migrate_generate: ## calls: './start.py migrate_config'
+migrate_config: ## calls: './start.py migrate_config'
 	docker-compose run --rm synapse migrate_config
 
