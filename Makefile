@@ -8,9 +8,19 @@ build: ## build image (not used yet)
 	docker-compose build --pull
 
 up: ## start server
-	docker-compose build --pull
+	docker-compose up
 
-#shell: ## go into container shell
+down: ## stop server
+	docker-compose down
 
-generate: ## generate the config file
-	docker-compose run synapse generate
+run_shell: ## go into container shell
+	docker-compose run --rm --entrypoint=/bin/sh synapse
+
+exec_shell: ## go into container shell
+	docker-compose exec synapse /bin/sh
+
+generate: ## calls: './start.py generate'
+	docker-compose run --rm synapse generate
+
+migrate_generate: ## calls: './start.py migrate_config'
+	docker-compose run --rm synapse migrate_config

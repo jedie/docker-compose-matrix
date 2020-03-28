@@ -6,16 +6,18 @@ version: '3'
 services:
 
   synapse:
+    container_name: matrix_synapse
     image: matrixdotorg/synapse:latest
+    entrypoint: /bin/sleep 1d
+
     # Since synapse does not retry to connect to the database, restart upon
     # failure
     restart: unless-stopped
     # See the readme for a full documentation of the environment settings
-    env_file: ./.env
+    env_file: .env
     volumes:
       # You may either store all the files in a local folder
       - ./volumes/synapse/data:/data:rw
-      - ./config/homeserver.yaml:/config/homeserver.yaml:ro
       # .. or you may split this between different storage points
       # - ./files:/data
       # - /path/to/ssd:/data/uploads
@@ -43,6 +45,7 @@ services:
 #      - traefik.http.routers.https-synapse.tls.certResolver=le-ssl
 
   db:
+    container_name: matrix_postgres
     image: docker.io/postgres:10-alpine
     # Change that password, of course!
     environment:
