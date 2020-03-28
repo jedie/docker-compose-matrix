@@ -12,10 +12,11 @@ services:
     restart: unless-stopped
     # See the readme for a full documentation of the environment settings
     environment:
-      - SYNAPSE_CONFIG_PATH=/data/homeserver.yaml
+      - SYNAPSE_CONFIG_PATH=/config/homeserver.yaml
     volumes:
       # You may either store all the files in a local folder
-      - ./files:/data
+      - ./volumes/synapse/data:/data:rw
+      - ./config/homeserver.yaml:/config/homeserver.yaml:ro
       # .. or you may split this between different storage points
       # - ./files:/data
       # - /path/to/ssd:/data/uploads

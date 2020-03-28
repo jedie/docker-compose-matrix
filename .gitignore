@@ -1,1 +1,5 @@
 .idea
+
+# Docker volumes:
+volumes
+!volumes/.gitkeep
